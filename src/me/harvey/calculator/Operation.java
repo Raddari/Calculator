@@ -1,11 +1,14 @@
 package me.harvey.calculator;
 
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.function.DoubleBinaryOperator;
 
 /**
- * An {@code Operation} is a basic mathematical function that can be found on most standard calculators.
+ * <p>An {@code Operation} is a basic mathematical function that can be found on most standard calculators.
  * These operations are specifically binary operators - they require two numbers to operate.
  *
  * TODO: Unary operators
@@ -26,5 +29,32 @@ public enum Operation {
 	Operation(@NotNull String symbol, @NotNull DoubleBinaryOperator op) {
 		_symbol = symbol;
 		_op = op;
+	}
+	
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public String toString() {
+		return _symbol;
+	}
+	
+	/**
+	 * Gets the associated {@link Operation} from its symbol.
+	 * @param symbol the symbol of the operation
+	 * @return operation associated with the symbol
+	 */
+	public static @Nullable Operation parse(String symbol) {
+		return LOOKUP.get(symbol);
+	}
+	
+	/**
+	 * Static lookup to efficiently get the operation from a string in {@link #parse(String)}.
+	 */
+	private static final @NotNull Map<String, Operation> LOOKUP = new HashMap<>(values().length);
+	static {
+		for (Operation operation : values()) {
+			LOOKUP.put(operation._symbol, operation);
+		}
 	}
 }

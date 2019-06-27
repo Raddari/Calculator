@@ -17,21 +17,24 @@ import java.util.function.DoubleBinaryOperator;
  * <p>TODO: Unary operators
  */
 public enum Operation {
-	SUBTRACT	("-", (x, y) -> x - y),
-	ADD			("+", (x, y) -> x + y),
-	MULTIPLY	("*", (x, y) -> x * y),
-	MODULO		("%", (x, y) -> x % y),
-	DIVIDE		("/", (x, y) -> x / y),
-	POWER		("^", (x, y) -> Math.pow(x, y));
+	SUBTRACT	("-", (x, y) -> x - y, Association.LEFT),
+	ADD			("+", (x, y) -> x + y, Association.LEFT),
+	MULTIPLY	("*", (x, y) -> x * y, Association.LEFT),
+	MODULO		("%", (x, y) -> x % y, Association.LEFT),
+	DIVIDE		("/", (x, y) -> x / y, Association.LEFT),
+	POWER		("^", (x, y) -> Math.pow(x, y), Association.RIGHT);
 	
 	/** String representation of the operator */
 	private final @NotNull String _symbol;
 	/** Operation to perform */
 	private final @NotNull DoubleBinaryOperator _op;
+	/** Associativity of the operation */
+	private final @NotNull Association _association;
 	
-	Operation(@NotNull String symbol, @NotNull DoubleBinaryOperator op) {
+	Operation(@NotNull String symbol, @NotNull DoubleBinaryOperator op, @NotNull Association association) {
 		_symbol = symbol;
 		_op = op;
+		_association = association;
 	}
 	
 	/**
@@ -53,6 +56,14 @@ public enum Operation {
 	}
 	
 	/**
+	 * Gets the association.
+	 * @return the operation's Associativity
+	 */
+	public @NotNull Association getAssociation() {
+		return _association;
+	}
+	
+	/**
 	 * Gets the associated {@link Operation} from its symbol.
 	 * @param symbol the symbol of the operation
 	 * @return operation associated with the symbol
@@ -69,5 +80,12 @@ public enum Operation {
 		for (Operation operation : values()) {
 			LOOKUP.put(operation._symbol, operation);
 		}
+	}
+	
+	/**
+	 * Defines an Operation as being left-associative or right-associative
+	 */
+	public enum Association {
+		LEFT, RIGHT
 	}
 }

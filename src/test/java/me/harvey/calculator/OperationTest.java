@@ -3,6 +3,7 @@ package me.harvey.calculator;
 import org.junit.Test;
 
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
 public class OperationTest {
@@ -100,6 +101,6 @@ public class OperationTest {
 	@Test
 	public void parseUnknown() {
 		Operation op = Operation.parse("r");
-		assertThat(op, is((Object) null));
+		assertNull(op);
 	}
 }

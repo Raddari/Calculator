@@ -32,6 +32,16 @@ public enum Operation {
 	}
 	
 	/**
+	 * Apply the operation to the given doubles.
+	 * @param x left double
+	 * @param y right double
+	 * @return the result of the operation on the two doubles
+	 */
+	public double apply(double x, double y) {
+		return _op.applyAsDouble(x, y);
+	}
+	
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override

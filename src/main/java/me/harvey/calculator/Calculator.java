@@ -1,5 +1,7 @@
 package me.harvey.calculator;
 
+import java.util.Scanner;
+
 /**
  * Main class for the calculator. This class is responsible for running the program, and taking input from
  * the user. After that, it parses the input and matches it to functions in {@link Operation} to produce
@@ -8,7 +10,14 @@ package me.harvey.calculator;
 public final class Calculator{
 	
 	public static void main(String[] args) {
-		System.out.println("Hello, world!");
+		Scanner sc = new Scanner(System.in);
+		
+		String input;
+		do {
+			input = sc.nextLine();
+		} while (!"q".equals(input));
+		
+		sc.close();
 	}
 	
 }

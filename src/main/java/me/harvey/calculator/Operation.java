@@ -11,7 +11,10 @@ import java.util.function.DoubleBinaryOperator;
  * <p>An {@code Operation} is a basic mathematical function that can be found on most standard calculators.
  * These operations are specifically binary operators - they require two numbers to operate.
  *
- * TODO: Unary operators
+ * <p>Operations are in reverse order in accordance to BEDMAS - this is to assist with the correct order of
+ * operations.
+ *
+ * <p>TODO: Unary operators
  */
 public enum Operation {
 	SUBTRACT	("-", (x, y) -> x - y),

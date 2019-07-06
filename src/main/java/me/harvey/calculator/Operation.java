@@ -22,7 +22,7 @@ public enum Operation {
 	MULTIPLY	("*", (x, y) -> x * y, Association.LEFT),
 	MODULO		("%", (x, y) -> x % y, Association.LEFT),
 	DIVIDE		("/", (x, y) -> x / y, Association.LEFT),
-	POWER		("^", (x, y) -> Math.pow(x, y), Association.RIGHT);
+	POWER		("^", Math::pow, Association.RIGHT);
 	
 	/** String representation of the operator */
 	private final @NotNull String _symbol;

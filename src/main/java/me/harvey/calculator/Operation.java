@@ -68,8 +68,17 @@ public enum Operation {
 	 * @param symbol the symbol of the operation
 	 * @return operation associated with the symbol
 	 */
-	public static @Nullable Operation parse(String symbol) {
+	public static @Nullable Operation parse(@Nullable String symbol) {
 		return LOOKUP.get(symbol);
+	}
+	
+	/**
+	 * Tests if the given String maps to an Operation.
+	 * @param op the operator
+	 * @return {@code true} if the enum contains the operation
+	 */
+	public static boolean isOperation(@NotNull String op) {
+		return LOOKUP.containsKey(op);
 	}
 	
 	/**

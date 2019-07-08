@@ -7,7 +7,7 @@ import java.util.Scanner;
  * the user. After that, it parses the input and matches it to functions in {@link Operation} to produce
  * the correct result of the expression.
  */
-public final class Calculator{
+public final class Calculator {
 	
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);

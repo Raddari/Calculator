@@ -77,7 +77,7 @@ public enum Operation {
 	 * @param op the operator
 	 * @return {@code true} if the enum contains the operation
 	 */
-	public static boolean isOperation(@NotNull String op) {
+	public static boolean isOperator(@NotNull String op) {
 		return LOOKUP.containsKey(op);
 	}
 	

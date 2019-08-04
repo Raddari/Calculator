@@ -15,12 +15,12 @@ import java.util.function.DoubleBinaryOperator;
  * operations.
  */
 public enum Operator implements DoubleBinaryOperator {
-	SUBTRACT	("-", (x, y) -> x - y, Association.LEFT),
-	ADD			("+", (x, y) -> x + y, Association.LEFT),
-	MULTIPLY	("*", (x, y) -> x * y, Association.LEFT),
-	MODULO		("%", (x, y) -> x % y, Association.LEFT),
+	MINUS		("-", (x, y) -> x - y, Association.LEFT),
+	PLUS		("+", (x, y) -> x + y, Association.LEFT),
+	TIMES		("*", (x, y) -> x * y, Association.LEFT),
+	REMAINDER	("%", (x, y) -> x % y, Association.LEFT),
 	DIVIDE		("/", (x, y) -> x / y, Association.LEFT),
-	POWER		("^", Math::pow, Association.RIGHT);
+	EXP			("^", Math::pow, Association.RIGHT);
 	
 	/** String representation of the operator */
 	private final @NotNull String symbol;

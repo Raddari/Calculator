@@ -10,7 +10,7 @@ public class OperatorTest {
 	
 	@Test
 	public void applySubtract() {
-		Operator op = Operator.SUBTRACT;
+		Operator op = Operator.MINUS;
 		double x = 10;
 		double y = 7;
 		double result = op.applyAsDouble(x, y);
@@ -19,7 +19,7 @@ public class OperatorTest {
 	
 	@Test
 	public void applyAdd() {
-		Operator op = Operator.ADD;
+		Operator op = Operator.PLUS;
 		double x = 10;
 		double y = 7;
 		double result = op.applyAsDouble(x, y);
@@ -28,7 +28,7 @@ public class OperatorTest {
 	
 	@Test
 	public void applyMultiply() {
-		Operator op = Operator.MULTIPLY;
+		Operator op = Operator.TIMES;
 		double x = 10;
 		double y = 7;
 		double result = op.applyAsDouble(x, y);
@@ -37,7 +37,7 @@ public class OperatorTest {
 	
 	@Test
 	public void applyModulo() {
-		Operator op = Operator.MODULO;
+		Operator op = Operator.REMAINDER;
 		double x = 10;
 		double y = 7;
 		double result = op.applyAsDouble(x, y);
@@ -55,7 +55,7 @@ public class OperatorTest {
 	
 	@Test
 	public void applyPower() {
-		Operator op = Operator.POWER;
+		Operator op = Operator.EXP;
 		double x = 10;
 		double y = 7;
 		double result = op.applyAsDouble(x, y);
@@ -65,25 +65,25 @@ public class OperatorTest {
 	@Test
 	public void parseSubtract() {
 		Operator op = Operator.parse("-");
-		assertThat(op, is(Operator.SUBTRACT));
+		assertThat(op, is(Operator.MINUS));
 	}
 	
 	@Test
 	public void parseAdd() {
 		Operator op = Operator.parse("+");
-		assertThat(op, is(Operator.ADD));
+		assertThat(op, is(Operator.PLUS));
 	}
 	
 	@Test
 	public void parseMultiply() {
 		Operator op = Operator.parse("*");
-		assertThat(op, is(Operator.MULTIPLY));
+		assertThat(op, is(Operator.TIMES));
 	}
 	
 	@Test
 	public void parseModulo() {
 		Operator op = Operator.parse("%");
-		assertThat(op, is(Operator.MODULO));
+		assertThat(op, is(Operator.REMAINDER));
 	}
 	
 	@Test
@@ -95,7 +95,7 @@ public class OperatorTest {
 	@Test
 	public void parsePower() {
 		Operator op = Operator.parse("^");
-		assertThat(op, is(Operator.POWER));
+		assertThat(op, is(Operator.EXP));
 	}
 	
 	@Test

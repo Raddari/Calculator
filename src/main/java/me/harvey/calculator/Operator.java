@@ -44,6 +44,15 @@ public enum Operator implements DoubleBinaryOperator {
 	}
 	
 	/**
+	 * Tests if this operator has a higher precedence.
+	 * @param operator operator to compare to
+	 * @return {@code true} if this operator has higher precedence
+	 */
+	public boolean isHigherPrecedence(@NotNull Operator operator) {
+	    return this.precedence > operator.precedence;
+    }
+	
+	/**
 	 * {@inheritDoc}
 	 */
 	@Override

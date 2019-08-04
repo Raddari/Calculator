@@ -21,4 +21,5 @@ There is very little input checking, so expect crashes if the above condition is
 
 ## TODO
 - [ ] Input validation
+- [ ] Left-right associativity
 - [ ] More Java 8+ magic

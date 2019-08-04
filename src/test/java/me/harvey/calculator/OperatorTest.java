@@ -6,101 +6,101 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertThat;
 
-public class OperationTest {
+public class OperatorTest {
 	
 	@Test
 	public void applySubtract() {
-		Operation op = Operation.SUBTRACT;
+		Operator op = Operator.SUBTRACT;
 		double x = 10;
 		double y = 7;
-		double result = op.apply(x, y);
+		double result = op.applyAsDouble(x, y);
 		assertThat(result, is(x - y));
 	}
 	
 	@Test
 	public void applyAdd() {
-		Operation op = Operation.ADD;
+		Operator op = Operator.ADD;
 		double x = 10;
 		double y = 7;
-		double result = op.apply(x, y);
+		double result = op.applyAsDouble(x, y);
 		assertThat(result, is(x + y));
 	}
 	
 	@Test
 	public void applyMultiply() {
-		Operation op = Operation.MULTIPLY;
+		Operator op = Operator.MULTIPLY;
 		double x = 10;
 		double y = 7;
-		double result = op.apply(x, y);
+		double result = op.applyAsDouble(x, y);
 		assertThat(result, is(x * y));
 	}
 	
 	@Test
 	public void applyModulo() {
-		Operation op = Operation.MODULO;
+		Operator op = Operator.MODULO;
 		double x = 10;
 		double y = 7;
-		double result = op.apply(x, y);
+		double result = op.applyAsDouble(x, y);
 		assertThat(result, is(x % y));
 	}
 	
 	@Test
 	public void applyDivide() {
-		Operation op = Operation.DIVIDE;
+		Operator op = Operator.DIVIDE;
 		double x = 10;
 		double y = 7;
-		double result = op.apply(x, y);
+		double result = op.applyAsDouble(x, y);
 		assertThat(result, is(x / y));
 	}
 	
 	@Test
 	public void applyPower() {
-		Operation op = Operation.POWER;
+		Operator op = Operator.POWER;
 		double x = 10;
 		double y = 7;
-		double result = op.apply(x, y);
+		double result = op.applyAsDouble(x, y);
 		assertThat(result, is(Math.pow(x, y)));
 	}
 	
 	@Test
 	public void parseSubtract() {
-		Operation op = Operation.parse("-");
-		assertThat(op, is(Operation.SUBTRACT));
+		Operator op = Operator.parse("-");
+		assertThat(op, is(Operator.SUBTRACT));
 	}
 	
 	@Test
 	public void parseAdd() {
-		Operation op = Operation.parse("+");
-		assertThat(op, is(Operation.ADD));
+		Operator op = Operator.parse("+");
+		assertThat(op, is(Operator.ADD));
 	}
 	
 	@Test
 	public void parseMultiply() {
-		Operation op = Operation.parse("*");
-		assertThat(op, is(Operation.MULTIPLY));
+		Operator op = Operator.parse("*");
+		assertThat(op, is(Operator.MULTIPLY));
 	}
 	
 	@Test
 	public void parseModulo() {
-		Operation op = Operation.parse("%");
-		assertThat(op, is(Operation.MODULO));
+		Operator op = Operator.parse("%");
+		assertThat(op, is(Operator.MODULO));
 	}
 	
 	@Test
 	public void parseDivide() {
-		Operation op = Operation.parse("/");
-		assertThat(op, is(Operation.DIVIDE));
+		Operator op = Operator.parse("/");
+		assertThat(op, is(Operator.DIVIDE));
 	}
 	
 	@Test
 	public void parsePower() {
-		Operation op = Operation.parse("^");
-		assertThat(op, is(Operation.POWER));
+		Operator op = Operator.parse("^");
+		assertThat(op, is(Operator.POWER));
 	}
 	
 	@Test
 	public void parseUnknown() {
-		Operation op = Operation.parse("r");
+		Operator op = Operator.parse("r");
 		assertNull(op);
 	}
 }

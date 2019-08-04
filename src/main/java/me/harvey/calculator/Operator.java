@@ -14,7 +14,7 @@ import java.util.function.DoubleBinaryOperator;
  * <p>Operations are in reverse order in accordance to BEDMAS - this is to assist with the correct order of
  * operations.
  */
-public enum Operation implements DoubleBinaryOperator {
+public enum Operator implements DoubleBinaryOperator {
 	SUBTRACT	("-", (x, y) -> x - y, Association.LEFT),
 	ADD			("+", (x, y) -> x + y, Association.LEFT),
 	MULTIPLY	("*", (x, y) -> x * y, Association.LEFT),
@@ -29,7 +29,7 @@ public enum Operation implements DoubleBinaryOperator {
 	/** Associativity of the operation */
 	private final @NotNull Association association;
 	
-	Operation(@NotNull String symbol, @NotNull DoubleBinaryOperator op, @NotNull Association association) {
+	Operator(@NotNull String symbol, @NotNull DoubleBinaryOperator op, @NotNull Association association) {
 		this.symbol = symbol;
 		this.op = op;
 		this.association = association;
@@ -60,11 +60,11 @@ public enum Operation implements DoubleBinaryOperator {
 	}
 	
 	/**
-	 * Gets the associated {@link Operation} from its symbol.
+	 * Gets the associated {@link Operator} from its symbol.
 	 * @param symbol the symbol of the operation
 	 * @return operation associated with the symbol
 	 */
-	public static @Nullable Operation parse(@Nullable String symbol) {
+	public static @Nullable Operator parse(@Nullable String symbol) {
 		return LOOKUP.get(symbol);
 	}
 	
@@ -80,10 +80,10 @@ public enum Operation implements DoubleBinaryOperator {
 	/**
 	 * Static lookup to efficiently get the operation from a string in {@link #parse(String)}.
 	 */
-	private static final @NotNull Map<String, Operation> LOOKUP = new HashMap<>(values().length);
+	private static final @NotNull Map<String, Operator> LOOKUP = new HashMap<>(values().length);
 	static {
-		for (Operation operation : values()) {
-			LOOKUP.put(operation.symbol, operation);
+		for (Operator operator : values()) {
+			LOOKUP.put(operator.symbol, operator);
 		}
 	}
 	

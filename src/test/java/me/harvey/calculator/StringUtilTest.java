@@ -1,39 +1,38 @@
 package me.harvey.calculator;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class StringUtilTest {
+class StringUtilTest {
     
     @Test
-    public void isNumericIntPos() {
+    void isNumericIntPositive() {
         String num = "24";
-        assertTrue(StringUtil.isNumeric(num));
+        assertThat(StringUtil.isNumeric(num)).isTrue();
     }
     
     @Test
-    public void isNumericIntNeg() {
+    void isNumericIntNegative() {
         String num = "-24";
-        assertTrue(StringUtil.isNumeric(num));
+        assertThat(StringUtil.isNumeric(num)).isTrue();
     }
     
     @Test
-    public void isNumericDecPos() {
+    void isNumericDecPositive() {
         String num = "24.053";
-        assertTrue(StringUtil.isNumeric(num));
+        assertThat(StringUtil.isNumeric(num)).isTrue();
     }
     
     @Test
-    public void isNumericDecNeg() {
+    void isNumericDecNegative() {
         String num = "-24.053";
-        assertTrue(StringUtil.isNumeric(num));
+        assertThat(StringUtil.isNumeric(num)).isTrue();
     }
     
     @Test
-    public void isNumericNot() {
+    void isNotNumeric() {
         String num = "abc";
-        assertFalse(StringUtil.isNumeric(num));
+        assertThat(StringUtil.isNumeric(num)).isFalse();
     }
 }

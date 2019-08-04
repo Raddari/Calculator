@@ -1,106 +1,104 @@
 package me.harvey.calculator;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertNull;
-import static org.junit.Assert.assertThat;
+import static org.assertj.core.api.Assertions.assertThat;
 
-public class OperatorTest {
+class OperatorTest {
     
     @Test
-    public void applySubtract() {
+    void applyMinus() {
         Operator op = Operator.MINUS;
         double x = 10;
         double y = 7;
         double result = op.applyAsDouble(x, y);
-        assertThat(result, is(x - y));
+        assertThat(result).isEqualTo(x - y);
     }
     
     @Test
-    public void applyAdd() {
+    void applyPlus() {
         Operator op = Operator.PLUS;
         double x = 10;
         double y = 7;
         double result = op.applyAsDouble(x, y);
-        assertThat(result, is(x + y));
+        assertThat(result).isEqualTo(x + y);
     }
     
     @Test
-    public void applyMultiply() {
+    void applyTimes() {
         Operator op = Operator.TIMES;
         double x = 10;
         double y = 7;
         double result = op.applyAsDouble(x, y);
-        assertThat(result, is(x * y));
+        assertThat(result).isEqualTo(x * y);
     }
     
     @Test
-    public void applyModulo() {
+    void applyRemainder() {
         Operator op = Operator.REMAINDER;
         double x = 10;
         double y = 7;
         double result = op.applyAsDouble(x, y);
-        assertThat(result, is(x % y));
+        assertThat(result).isEqualTo(x % y);
     }
     
     @Test
-    public void applyDivide() {
+    void applyDivide() {
         Operator op = Operator.DIVIDE;
         double x = 10;
         double y = 7;
         double result = op.applyAsDouble(x, y);
-        assertThat(result, is(x / y));
+        assertThat(result).isEqualTo(x / y);
     }
     
     @Test
-    public void applyPower() {
+    void applyExp() {
         Operator op = Operator.EXP;
         double x = 10;
         double y = 7;
         double result = op.applyAsDouble(x, y);
-        assertThat(result, is(Math.pow(x, y)));
+        assertThat(result).isEqualTo(Math.pow(x, y));
     }
     
     @Test
-    public void parseSubtract() {
+    void parseMinus() {
         Operator op = Operator.parse("-");
-        assertThat(op, is(Operator.MINUS));
+        assertThat(op).isEqualTo(Operator.MINUS);
     }
     
     @Test
-    public void parseAdd() {
+    void parsePlus() {
         Operator op = Operator.parse("+");
-        assertThat(op, is(Operator.PLUS));
+        assertThat(op).isEqualTo(Operator.PLUS);
     }
     
     @Test
-    public void parseMultiply() {
+    void parseTimes() {
         Operator op = Operator.parse("*");
-        assertThat(op, is(Operator.TIMES));
+        assertThat(op).isEqualTo(Operator.TIMES);
     }
     
     @Test
-    public void parseModulo() {
+    void parseRemainder() {
         Operator op = Operator.parse("%");
-        assertThat(op, is(Operator.REMAINDER));
+        assertThat(op).isEqualTo(Operator.REMAINDER);
     }
     
     @Test
-    public void parseDivide() {
+    void parseDivide() {
         Operator op = Operator.parse("/");
-        assertThat(op, is(Operator.DIVIDE));
+        assertThat(op).isEqualTo(Operator.DIVIDE);
     }
     
     @Test
-    public void parsePower() {
+    void parseExp() {
         Operator op = Operator.parse("^");
-        assertThat(op, is(Operator.EXP));
+        assertThat(op).isEqualTo(Operator.EXP);
     }
     
     @Test
-    public void parseUnknown() {
+    void parseUnknown() {
         Operator op = Operator.parse("r");
-        assertNull(op);
+        assertThat(op).isNull();
     }
 }

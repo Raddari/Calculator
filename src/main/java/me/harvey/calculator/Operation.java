@@ -13,10 +13,8 @@ import java.util.function.DoubleBinaryOperator;
  *
  * <p>Operations are in reverse order in accordance to BEDMAS - this is to assist with the correct order of
  * operations.
- *
- * <p>TODO: Unary operators
  */
-public enum Operation {
+public enum Operation implements DoubleBinaryOperator {
 	SUBTRACT	("-", (x, y) -> x - y, Association.LEFT),
 	ADD			("+", (x, y) -> x + y, Association.LEFT),
 	MULTIPLY	("*", (x, y) -> x * y, Association.LEFT),
@@ -25,26 +23,24 @@ public enum Operation {
 	POWER		("^", Math::pow, Association.RIGHT);
 	
 	/** String representation of the operator */
-	private final @NotNull String _symbol;
+	private final @NotNull String symbol;
 	/** Operation to perform */
-	private final @NotNull DoubleBinaryOperator _op;
+	private final @NotNull DoubleBinaryOperator op;
 	/** Associativity of the operation */
-	private final @NotNull Association _association;
+	private final @NotNull Association association;
 	
 	Operation(@NotNull String symbol, @NotNull DoubleBinaryOperator op, @NotNull Association association) {
-		_symbol = symbol;
-		_op = op;
-		_association = association;
+		this.symbol = symbol;
+		this.op = op;
+		this.association = association;
 	}
 	
 	/**
-	 * Apply the operation to the given doubles.
-	 * @param x left double
-	 * @param y right double
-	 * @return the result of the operation on the two doubles
+	 * {@inheritDoc}
 	 */
-	public double apply(double x, double y) {
-		return _op.applyAsDouble(x, y);
+	@Override
+	public double applyAsDouble(double x, double y) {
+		return op.applyAsDouble(x, y);
 	}
 	
 	/**
@@ -52,7 +48,7 @@ public enum Operation {
 	 */
 	@Override
 	public String toString() {
-		return _symbol;
+		return symbol;
 	}
 	
 	/**
@@ -60,7 +56,7 @@ public enum Operation {
 	 * @return the operation's Associativity
 	 */
 	public @NotNull Association getAssociation() {
-		return _association;
+		return association;
 	}
 	
 	/**
@@ -87,7 +83,7 @@ public enum Operation {
 	private static final @NotNull Map<String, Operation> LOOKUP = new HashMap<>(values().length);
 	static {
 		for (Operation operation : values()) {
-			LOOKUP.put(operation._symbol, operation);
+			LOOKUP.put(operation.symbol, operation);
 		}
 	}
 	

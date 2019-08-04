@@ -4,6 +4,10 @@ import org.jetbrains.annotations.NotNull;
 
 public final class StringUtil {
 	
+	private StringUtil() {
+		// No instances
+	}
+	
 	/**
 	 * Checks if a String contains only numeric characters (with optional negative sign and decimal).
 	 * This ONLY works for latin numbers 0-9.

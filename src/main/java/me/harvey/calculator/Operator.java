@@ -10,27 +10,27 @@ import java.util.function.DoubleBinaryOperator;
 /**
  * <p>An {@code Operation} is a basic mathematical function that can be found on most standard calculators.
  * These operations are specifically binary operators - they require two numbers to operate.
- *
- * <p>Operations are in reverse order in accordance to BEDMAS - this is to assist with the correct order of
- * operations.
  */
 public enum Operator implements DoubleBinaryOperator {
-	MINUS		("-", (x, y) -> x - y, Association.LEFT),
-	PLUS		("+", (x, y) -> x + y, Association.LEFT),
-	TIMES		("*", (x, y) -> x * y, Association.LEFT),
-	REMAINDER	("%", (x, y) -> x % y, Association.LEFT),
-	DIVIDE		("/", (x, y) -> x / y, Association.LEFT),
-	EXP			("^", Math::pow, Association.RIGHT);
+    PLUS		("+", 0, (x, y) -> x + y, Association.LEFT),
+	MINUS		("-", 0, (x, y) -> x - y, Association.LEFT),
+	TIMES		("*", 1, (x, y) -> x * y, Association.LEFT),
+    DIVIDE		("/", 1, (x, y) -> x / y, Association.LEFT),
+	REMAINDER	("%", 1, (x, y) -> x % y, Association.LEFT),
+	EXP			("^", 2, Math::pow, Association.RIGHT);
 	
 	/** String representation of the operator */
 	private final @NotNull String symbol;
+	/** Operator precedence */
+	private final int precedence;
 	/** Operation to perform */
 	private final @NotNull DoubleBinaryOperator op;
 	/** Associativity of the operation */
 	private final @NotNull Association association;
 	
-	Operator(@NotNull String symbol, @NotNull DoubleBinaryOperator op, @NotNull Association association) {
+	Operator(@NotNull String symbol, int precedence, @NotNull DoubleBinaryOperator op, @NotNull Association association) {
 		this.symbol = symbol;
+		this.precedence = precedence;
 		this.op = op;
 		this.association = association;
 	}

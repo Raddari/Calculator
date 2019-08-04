@@ -91,7 +91,7 @@ public enum Operator implements DoubleBinaryOperator {
      */
     private static final @NotNull Map<String, Operator> LOOKUP = new HashMap<>(values().length);
     static {
-        for (Operator operator : values()) {
+        for (var operator : values()) {
             LOOKUP.put(operator.symbol, operator);
         }
     }

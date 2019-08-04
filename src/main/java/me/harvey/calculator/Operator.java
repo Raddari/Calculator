@@ -61,14 +61,6 @@ public enum Operator implements DoubleBinaryOperator {
     }
     
     /**
-     * Gets the association.
-     * @return the operation's Associativity
-     */
-    public @NotNull Association getAssociation() {
-        return association;
-    }
-    
-    /**
      * Gets the associated {@link Operator} from its symbol.
      * @param symbol the symbol of the operation
      * @return operation associated with the symbol
@@ -99,7 +91,7 @@ public enum Operator implements DoubleBinaryOperator {
     /**
      * Defines an Operation as being left-associative or right-associative
      */
-    public enum Association {
+    private enum Association {
         LEFT, RIGHT
     }
 }

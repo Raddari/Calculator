@@ -1,5 +1,6 @@
 package me.harvey.calculator;
 
+import org.jetbrains.annotations.Contract;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -75,6 +76,7 @@ public enum Operator implements DoubleBinaryOperator {
      * @param symbol the symbol of the operation
      * @return operation associated with the symbol
      */
+    @Contract("null -> null")
     public static @Nullable Operator parse(@Nullable String symbol) {
         return LOOKUP.get(symbol);
     }

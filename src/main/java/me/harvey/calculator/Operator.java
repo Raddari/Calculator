@@ -3,9 +3,10 @@ package me.harvey.calculator;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.HashMap;
+import java.util.Arrays;
 import java.util.Map;
 import java.util.function.DoubleBinaryOperator;
+import java.util.stream.Collectors;
 
 /**
  * <p>An {@code Operation} is a basic mathematical function that can be found on most standard calculators.
@@ -57,6 +58,15 @@ public enum Operator implements DoubleBinaryOperator {
      */
     @Override
     public String toString() {
+        return String.format("%s[symbol=%s,precedence=%d,association=%s]",
+                getClass().getName(), symbol, precedence, association);
+    }
+    
+    /**
+     * Gets the symbol of the associated operator.
+     * @return the operator's symbol
+     */
+    public @NotNull String getSymbol() {
         return symbol;
     }
     
@@ -81,11 +91,10 @@ public enum Operator implements DoubleBinaryOperator {
     /**
      * Static lookup to efficiently get the operation from a string in {@link #parse(String)}.
      */
-    private static final @NotNull Map<String, Operator> LOOKUP = new HashMap<>(values().length);
+    private static final @NotNull Map<String, Operator> LOOKUP;
     static {
-        for (var operator : values()) {
-            LOOKUP.put(operator.symbol, operator);
-        }
+        LOOKUP = Arrays.stream(values())
+                         .collect(Collectors.toMap(Operator::getSymbol, op -> op));
     }
     
     /**

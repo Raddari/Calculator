@@ -8,31 +8,31 @@ class StringUtilTest {
     
     @Test
     void isNumericIntPositive() {
-        String num = "24";
+        var num = "24";
         assertThat(StringUtil.isNumeric(num)).isTrue();
     }
     
     @Test
     void isNumericIntNegative() {
-        String num = "-24";
+        var num = "-24";
         assertThat(StringUtil.isNumeric(num)).isTrue();
     }
     
     @Test
     void isNumericDecPositive() {
-        String num = "24.053";
+        var num = "24.053";
         assertThat(StringUtil.isNumeric(num)).isTrue();
     }
     
     @Test
     void isNumericDecNegative() {
-        String num = "-24.053";
+        var num = "-24.053";
         assertThat(StringUtil.isNumeric(num)).isTrue();
     }
     
     @Test
     void isNotNumeric() {
-        String num = "abc";
+        var num = "abc";
         assertThat(StringUtil.isNumeric(num)).isFalse();
     }
 }

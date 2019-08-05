@@ -5,7 +5,6 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayDeque;
 import java.util.Deque;
 import java.util.Scanner;
-import java.util.regex.Pattern;
 
 /**
  * <p>Main class for the calculator. This class is responsible for running the program, and taking input from
@@ -15,27 +14,25 @@ import java.util.regex.Pattern;
 public final class Calculator {
     
     public static void main(String[] args) {
-        Scanner sc = new Scanner(System.in);
-    
         System.out.println("Type the expression to evaluate, or 'q' to quit");
-        String input;
-        do {
-            input = sc.nextLine();
-            var parsed = shuntYardParse(input);
-            var result = evaluateExpression(parsed);
-            System.out.println(result);
-            System.out.println();
-            
-        } while (!"q".equals(input));
+        try (var sc = new Scanner(System.in)) {
+            String input;
+            do {
+                input = sc.nextLine();
+                var parsed = shuntYardParse(input);
+                var result = evaluateExpression(parsed);
+                System.out.println(result);
+                System.out.println();
         
-        sc.close();
+            } while (!"q".equals(input));
+        }
+        
     }
     
     private static double evaluateExpression(@NotNull String postfix) {
-        var tokens = Pattern.compile(" ").split(postfix);
         Deque<Double> stack = new ArrayDeque<>();
         
-        for (var token : tokens) {
+        for (var token : postfix.split(" ")) {
             if (Operator.isOperator(token)) {
                 var d0 = stack.pop();
                 var d1 = stack.pop();
@@ -49,7 +46,7 @@ public final class Calculator {
     }
     
     private static @NotNull String shuntYardParse(@NotNull String infix) {
-        StringBuilder output = new StringBuilder();
+        var output = new StringBuilder();
         Deque<String> stack = new ArrayDeque<>();
         
         for (var token : infix.split(" ")) {

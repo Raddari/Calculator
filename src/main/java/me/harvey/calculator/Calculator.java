@@ -16,17 +16,18 @@ public final class Calculator {
     public static void main(String[] args) {
         System.out.println("Type the expression to evaluate, or 'q' to quit");
         try (var sc = new Scanner(System.in)) {
-            String input;
-            do {
-                input = sc.nextLine();
+            while (true) {
+                var input = sc.nextLine();
+                if (input.equals("q")) {
+                    break;
+                }
                 var parsed = shuntYardParse(input);
                 var result = evaluateExpression(parsed);
                 System.out.println(result);
                 System.out.println();
-        
-            } while (!"q".equals(input));
+            }
         }
-        
+        System.exit(0);
     }
     
     private static double evaluateExpression(@NotNull String postfix) {
